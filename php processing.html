@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Processing</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f4f7f9;
+}
+.result {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+h2 { color: #333; }
+.success { color: green; }
+</style>
+</head>
+<body>
+
+<div class="result">
+<h2>✅ Form Processed Successfully</h2>
+
+<?php
+// Check if form was submitted via POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // Get and sanitize form data
+    $name    = htmlspecialchars(trim($_POST['name'] ?? ''));
+    $email   = htmlspecialchars(trim($_POST['email'] ?? ''));
+    $subject = htmlspecialchars(trim($_POST['subject'] ?? ''));
+    $message = htmlspecialchars(trim($_POST['message'] ?? ''));
+    
+    // Basic validation
+    $errors = [];
+    
+    if (empty($name)) $errors[] = "Name is required.";
+    if (empty($email)) $errors[] = "Email is required.";
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email format.";
+    if (empty($message)) $errors[] = "Message is required.";
+    
+    if (!empty($errors)) {
+        echo "<p style='color:red;'><strong>Errors:</strong></p>";
+        echo "<ul>";
+        foreach ($errors as $error) {
+            echo "<li>$error</li>";
+        }
+        echo "</ul>";
+    } else {
+        // Process the data (you can save to database, send email, etc.)
+        echo "<p class='success'>Thank you, <strong>$name</strong>!</p>";
+        echo "<p><strong>Email:</strong> $email</p>";
+        echo "<p><strong>Subject:</strong> $subject</p>";
+        echo "<p><strong>Message:</strong><br>" . nl2br($message) . "</p>";
+        
+        // Optional: Log to file
+        $log = date('Y-m-d H:i:s') . " - Name: $name | Email: $email | Subject: $subject\n";
+        file_put_contents('submissions.log', $log, FILE_APPEND);
+    }
+    
+} else {
+    echo "<p style='color:red;'>Invalid request. Please submit the form.</p>";
+}
+?>
+
+<hr>
+<a href="index.html">← Back to Form</a>
+</div>
+
+</body>
+</html>
