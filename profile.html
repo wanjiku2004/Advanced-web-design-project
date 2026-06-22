@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priscilla Wanjiku - Profile</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    padding:20px;
+}
+
+.profile-container{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+
+.profile-content{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    padding:30px;
+}
+
+.profile-image{
+    flex:1;
+    text-align:center;
+}
+
+.profile-image img{
+    width:100%;
+    max-width:250px;
+    height:auto;
+    border-radius:50%;
+    border:4px solid #0077cc;
+}
+
+.profile-details{
+    flex:2;
+}
+
+.profile-details h1{
+    color:#0077cc;
+    margin-bottom:15px;
+}
+
+.section{
+    margin-bottom:20px;
+}
+
+.section h2{
+    margin-bottom:10px;
+    color:#333;
+}
+
+.section p{
+    color:#555;
+    line-height:1.6;
+}
+
+.contact-info p{
+    margin-bottom:8px;
+}
+
+/* Mobile View */
+@media (max-width: 768px){
+    
+    .profile-content{
+        flex-direction:column;
+        text-align:center;
+    }
+    
+    .profile-details{
+        width:100%;
+    }
+}
+
+/* Desktop View */
+@media (min-width: 769px){
+    
+    .profile-content{
+        flex-direction:row;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="profile-container">
+
+<div class="profile-content">
+
+<div class="profile-image">
+<img src="profile.jpg" alt="Priscilla Wanjiku">
+</div>
+
+<div class="profile-details">
+
+<h1>Priscilla Wanjiku</h1>
+
+<div class="section">
+<h2>About Me</h2>
+<p>
+I am a passionate Information Technology student with an
+interest in web development, database management,
+user interface design, and software development.
+I enjoy creating digital solutions that improve user
+experiences and solve real-world problems.
+</p>
+</div>
+
+<div class="section contact-info">
+<h2>Contact Information</h2>
+
+<p><strong>Email:</strong> wanjikuprisca34@gmail.com</p>
+<p><strong>Phone:</strong> +254 750 672 566</p>
+<p><strong>Location:</strong> Nairobi, Kenya</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
